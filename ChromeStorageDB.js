@@ -1,7 +1,37 @@
 /*
 Hello, I am Hasan Mahmud Rimon
 I developed this class to interact chrome storage API as Model Based Database
-Github: https://gitbuh.com/hanmadrin
+You can create a Data Model and can apply GET(), POST(), PUT(), DELETE() methods on them.
+demo model and application:
+let User = new ChromeStorageDB({
+    name:'users',
+    attributes:{
+        id:{
+            autoIncrement: true,
+            primaryKey: true,
+        },
+        username:{
+            type: 'string',
+            primaryKey: true,
+        },
+        followed:{
+            type: 'boolean',
+        }
+    }
+});
+User.GET({});
+User.POST({
+    username:'hasan__mahmud',
+    followed:true
+});
+User.PUT({
+    set: {followed:false},
+    where:{username:[{operation:'equal',value:'hasan__mahmud'}]}
+});
+User.DELETE({
+   username:[{operation:'equal',value:'hasan__mahmud}]
+});
+
 */
 class StorageDB{
     constructor({name,attributes}){
